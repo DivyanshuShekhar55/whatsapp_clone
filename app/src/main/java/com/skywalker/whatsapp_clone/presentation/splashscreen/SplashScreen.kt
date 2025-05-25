@@ -1,4 +1,9 @@
 package com.skywalker.whatsapp_clone.presentation.splashscreen
 
-class SplashScreen {
+import androidx.compose.runtime.Composable
+
+
+@Composable
+fun SplashScreen(){
+
 }
