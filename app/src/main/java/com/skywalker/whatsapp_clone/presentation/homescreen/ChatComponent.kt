@@ -1,4 +1,4 @@
-package com.skywalker.whatsapp_clone.presentation.chat_list
+package com.skywalker.whatsapp_clone.presentation.homescreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
