@@ -129,8 +129,3 @@ fun TopBar() {
     }
 }
 
-@Composable
-@Preview
-fun ChatComponent() {
-
-}
