@@ -26,11 +26,10 @@ import androidx.compose.ui.unit.sp
 import com.skywalker.whatsapp_clone.R
 
 @Composable
-@Preview
-fun ChatComponent(chat_list: ChatListModel) {
+fun ChatComponent(chat_item: ChatListModel) {
     Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
         Image(
-            painter = painterResource(chat_list.image),
+            painter = painterResource(chat_item.image),
             contentDescription = null,
             modifier = Modifier
                 .size(70.dp)
@@ -48,13 +47,13 @@ fun ChatComponent(chat_list: ChatListModel) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    chat_list.name,
+                    chat_item.name,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 24.sp,
                 )
 
                 Text(
-                    chat_list.time,
+                    chat_item.time,
                     fontSize = 12.sp,
                     color = Color.Gray
                 )
@@ -62,7 +61,7 @@ fun ChatComponent(chat_list: ChatListModel) {
             }
 
             Text(
-                chat_list.message,
+                chat_item.message,
                 fontWeight = FontWeight.Normal,
                 fontSize = 18.sp,
             )

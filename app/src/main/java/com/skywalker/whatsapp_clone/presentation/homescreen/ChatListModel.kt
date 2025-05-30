@@ -1,5 +1,6 @@
 package com.skywalker.whatsapp_clone.presentation.homescreen
 
+
 data class ChatListModel(
 
     val image: Int,
