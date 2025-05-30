@@ -27,10 +27,10 @@ import com.skywalker.whatsapp_clone.R
 
 @Composable
 @Preview
-fun ChatComponent() {
+fun ChatComponent(chat_list: ChatListModel) {
     Row(modifier = Modifier.padding(8.dp), verticalAlignment = Alignment.CenterVertically) {
         Image(
-            painter = painterResource(R.drawable.pfp_1),
+            painter = painterResource(chat_list.image),
             contentDescription = null,
             modifier = Modifier
                 .size(70.dp)
@@ -43,16 +43,18 @@ fun ChatComponent() {
             modifier = Modifier
                 .padding(start = 12.dp)
         ) {
-            Row (horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier.fillMaxWidth()){
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
+            ) {
                 Text(
-                    "Sakamoto Taro",
+                    chat_list.name,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 24.sp,
                 )
 
                 Text(
-                    "10:29 AM",
+                    chat_list.time,
                     fontSize = 12.sp,
                     color = Color.Gray
                 )
@@ -60,7 +62,7 @@ fun ChatComponent() {
             }
 
             Text(
-                "Wanna come Japan ??",
+                chat_list.message,
                 fontWeight = FontWeight.Normal,
                 fontSize = 18.sp,
             )
