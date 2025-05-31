@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.skywalker.whatsapp_clone.presentation.homescreen.HomeScreen
 import com.skywalker.whatsapp_clone.presentation.splashscreen.SplashScreen
+import com.skywalker.whatsapp_clone.presentation.status_screen.StatusScreen
 import com.skywalker.whatsapp_clone.ui.theme.Whatsapp_cloneTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +23,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             Whatsapp_cloneTheme {
                 //SplashScreen()
-                HomeScreen()
+                // HomeScreen()
+                StatusScreen()
             }
         }
     }
