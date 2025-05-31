@@ -73,7 +73,7 @@ fun HomeScreen() {
                     Icons.Default.AddComment,
                     "send",
                     modifier = Modifier
-                        .size(36.dp)
+                        .size(28.dp)
                 )
             }
         }
