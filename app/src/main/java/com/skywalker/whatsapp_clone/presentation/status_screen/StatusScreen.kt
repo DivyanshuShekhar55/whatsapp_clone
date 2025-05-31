@@ -21,6 +21,7 @@ import androidx.compose.material.icons.outlined.Cancel
 import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeFloatingActionButton
@@ -74,6 +75,15 @@ fun StatusScreen() {
         Column {
             Spacer(modifier = Modifier.height(18.dp))
             TopBar()
+            Spacer(modifier = Modifier.height(12.dp))
+            Column(modifier = Modifier.padding(horizontal = 16.dp)) {
+                Text(
+                    "Status",
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 24.sp
+                )
+            }
+
         }
 
     }
@@ -187,4 +197,10 @@ fun TopBar() {
 
 
     }
+    HorizontalDivider(
+        thickness = 1.dp,
+        modifier = Modifier
+            .padding(top = 4.dp)
+    )
 }
+
