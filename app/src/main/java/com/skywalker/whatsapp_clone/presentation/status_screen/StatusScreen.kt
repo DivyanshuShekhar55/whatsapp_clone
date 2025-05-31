@@ -37,6 +37,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
@@ -82,6 +83,7 @@ fun StatusScreen() {
 fun TopBar() {
     var isSearching by remember { mutableStateOf(false) }
     var searchText by remember { mutableStateOf("") }
+    var isTextFieldFocused by remember { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
@@ -100,7 +102,7 @@ fun TopBar() {
                         .fillMaxWidth()
                         .clip(CircleShape)
                         .background(
-                            if (!isSearching) Color.LightGray
+                            if (isTextFieldFocused) Color.LightGray
                             else colorResource(R.color.smokey_white)
                         )
 
@@ -112,7 +114,10 @@ fun TopBar() {
                         onValueChange = { searchText = it },
                         placeholder = { Text("Search") },
                         modifier = Modifier
-                            .weight(1f),
+                            .weight(1f)
+                            .onFocusChanged { focusState ->
+                                isTextFieldFocused = focusState.isFocused
+                            },
                         colors = TextFieldDefaults.colors(
                             focusedContainerColor = Color.LightGray,
                             unfocusedContainerColor = colorResource(R.color.smokey_white),
@@ -121,7 +126,8 @@ fun TopBar() {
                             cursorColor = Color.Black
                         ),
                         singleLine = true,
-                    )
+
+                        )
                     IconButton(onClick = { isSearching = !isSearching }) {
                         Icon(
                             Icons.Outlined.Close,
