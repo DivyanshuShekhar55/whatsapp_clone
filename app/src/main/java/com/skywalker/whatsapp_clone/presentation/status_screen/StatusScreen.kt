@@ -1,5 +1,6 @@
 package com.skywalker.whatsapp_clone.presentation.status_screen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -79,7 +80,7 @@ fun StatusScreen() {
 
 @Composable
 fun TopBar() {
-    var isSearching by remember { mutableStateOf(true) }
+    var isSearching by remember { mutableStateOf(false) }
     var searchText by remember { mutableStateOf("") }
 
     Box(
@@ -91,26 +92,37 @@ fun TopBar() {
             Box(
                 modifier = Modifier
                     .padding(start = 18.dp, end = 18.dp)
-                    .fillMaxWidth()
-                    .clip(CircleShape)
             ) {
-                TextField(
-                    value = searchText,
-                    onValueChange = { searchText = it },
-                    placeholder = { Text("Search") },
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
-                        .fillMaxWidth(),
-                    colors = TextFieldDefaults.colors(
-                        focusedContainerColor = Color.LightGray,
-                        unfocusedContainerColor = colorResource(R.color.smokey_white),
-                        focusedIndicatorColor = Color.Transparent,
-                        unfocusedIndicatorColor = Color.Transparent,
-                        cursorColor = Color.Black
-                    )
+                        .padding(horizontal = 8.dp)
+                        .fillMaxWidth()
+                        .clip(CircleShape)
+                        .background(
+                            if (!isSearching) Color.LightGray
+                            else colorResource(R.color.smokey_white)
+                        )
 
-                )
-                Row(modifier = Modifier.align(Alignment.CenterEnd)) {
-                    IconButton(onClick = {}) {
+                ) {
+
+
+                    TextField(
+                        value = searchText,
+                        onValueChange = { searchText = it },
+                        placeholder = { Text("Search") },
+                        modifier = Modifier
+                            .weight(1f),
+                        colors = TextFieldDefaults.colors(
+                            focusedContainerColor = Color.LightGray,
+                            unfocusedContainerColor = colorResource(R.color.smokey_white),
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            cursorColor = Color.Black
+                        ),
+                        singleLine = true,
+                    )
+                    IconButton(onClick = { isSearching = !isSearching }) {
                         Icon(
                             Icons.Outlined.Close,
                             contentDescription = null,
@@ -121,6 +133,7 @@ fun TopBar() {
                     }
                 }
             }
+
 
         } else {
             Text(
@@ -145,7 +158,7 @@ fun TopBar() {
                 }
 
                 IconButton(
-                    onClick = {/*ToDo*/ }
+                    onClick = { isSearching = !isSearching }
                 ) {
                     Icon(
                         Icons.Default.Search,
