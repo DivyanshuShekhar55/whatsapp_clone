@@ -8,12 +8,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddComment
 import androidx.compose.material.icons.filled.CameraAlt
+import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.QrCode
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.Cancel
+import androidx.compose.material.icons.outlined.Close
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
@@ -22,9 +26,17 @@ import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -34,11 +46,11 @@ import com.skywalker.whatsapp_clone.R
 
 @Composable
 @Preview
-fun StatusScreen(){
+fun StatusScreen() {
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick={},
+                onClick = {},
                 containerColor = colorResource(R.color.light_green),
                 contentColor = colorResource(R.color.white),
                 elevation = FloatingActionButtonDefaults.elevation(
@@ -46,7 +58,7 @@ fun StatusScreen(){
                     pressedElevation = 12.dp
                 )
 
-            ){
+            ) {
                 Icon(
                     Icons.Default.CameraAlt,
                     "send",
@@ -55,8 +67,7 @@ fun StatusScreen(){
                 )
             }
         }
-    ) {
-            paddingValue ->
+    ) { paddingValue ->
         Text("", modifier = Modifier.padding(paddingValue))
         Column {
             Spacer(modifier = Modifier.height(18.dp))
@@ -67,48 +78,94 @@ fun StatusScreen(){
 }
 
 @Composable
-fun TopBar(){
-    Box(modifier= Modifier
-        .fillMaxWidth()){
-        Text("Updates",
-            fontWeight = FontWeight.Medium,
-            fontSize = 32.sp,
-            modifier= Modifier
-                .align(Alignment.CenterStart)
-                .padding(start = 18.dp),
+fun TopBar() {
+    var isSearching by remember { mutableStateOf(true) }
+    var searchText by remember { mutableStateOf("") }
 
-        )
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
 
-        Row (modifier=Modifier.align(Alignment.CenterEnd)  ){
-            IconButton(
-                onClick={/*ToDo*/}
+        if (isSearching) {
+            Box(
+                modifier = Modifier
+                    .padding(start = 18.dp, end = 18.dp)
+                    .fillMaxWidth()
+                    .clip(CircleShape)
             ) {
-                Icon(
-                    Icons.Default.QrCode,
-                    contentDescription = null,
-                    modifier=Modifier.size(32.dp)
+                TextField(
+                    value = searchText,
+                    onValueChange = { searchText = it },
+                    placeholder = { Text("Search") },
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    colors = TextFieldDefaults.colors(
+                        focusedContainerColor = Color.LightGray,
+                        unfocusedContainerColor = colorResource(R.color.smokey_white),
+                        focusedIndicatorColor = Color.Transparent,
+                        unfocusedIndicatorColor = Color.Transparent,
+                        cursorColor = Color.Black
+                    )
+
                 )
+                Row(modifier = Modifier.align(Alignment.CenterEnd)) {
+                    IconButton(onClick = {}) {
+                        Icon(
+                            Icons.Outlined.Close,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(32.dp)
+                                .padding(end = 8.dp)
+                        )
+                    }
+                }
             }
 
-            IconButton(
-                onClick={/*ToDo*/}
-            ) {
-                Icon(
-                    Icons.Default.Search,
-                    contentDescription = null,
-                    modifier=Modifier.size(32.dp)
-                )
-            }
+        } else {
+            Text(
+                "Updates",
+                fontWeight = FontWeight.Medium,
+                fontSize = 32.sp,
+                modifier = Modifier
+                    .align(Alignment.CenterStart)
+                    .padding(start = 18.dp),
 
-            IconButton(
-                onClick={/*ToDo*/}
-            ) {
-                Icon(
-                    Icons.Default.MoreVert,
-                    contentDescription = null,
-                    modifier=Modifier.size(32.dp)
                 )
+
+            Row(modifier = Modifier.align(Alignment.CenterEnd)) {
+                IconButton(
+                    onClick = {/*ToDo*/ }
+                ) {
+                    Icon(
+                        Icons.Default.QrCode,
+                        contentDescription = null,
+                        modifier = Modifier.size(32.dp)
+                    )
+                }
+
+                IconButton(
+                    onClick = {/*ToDo*/ }
+                ) {
+                    Icon(
+                        Icons.Default.Search,
+                        contentDescription = null,
+                        modifier = Modifier.size(32.dp)
+                    )
+                }
+
+                IconButton(
+                    onClick = {/*ToDo*/ }
+                ) {
+                    Icon(
+                        Icons.Default.MoreVert,
+                        contentDescription = null,
+                        modifier = Modifier.size(32.dp)
+                    )
+                }
             }
         }
+
+
     }
 }
