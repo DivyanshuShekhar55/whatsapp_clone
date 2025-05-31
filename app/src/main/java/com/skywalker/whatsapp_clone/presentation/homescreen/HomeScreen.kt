@@ -32,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.FloatingActionButton
 import com.skywalker.whatsapp_clone.R
 
 @Composable
@@ -59,7 +60,7 @@ fun HomeScreen() {
     )
     Scaffold(
         floatingActionButton = {
-            LargeFloatingActionButton(
+            FloatingActionButton(
                 onClick = {},
                 containerColor = colorResource(R.color.light_green),
                 contentColor = colorResource(R.color.white),
