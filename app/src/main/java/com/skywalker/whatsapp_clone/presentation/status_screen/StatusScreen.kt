@@ -75,13 +75,17 @@ fun StatusScreen() {
         Column {
             Spacer(modifier = Modifier.height(18.dp))
             TopBar()
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(24.dp))
             Column(modifier = Modifier.padding(horizontal = 16.dp)) {
                 Text(
                     "Status",
                     fontWeight = FontWeight.Medium,
-                    fontSize = 24.sp
+                    fontSize = 24.sp,
                 )
+
+                Spacer(modifier=Modifier.height(18.dp))
+
+                StatusItem()
             }
 
         }
