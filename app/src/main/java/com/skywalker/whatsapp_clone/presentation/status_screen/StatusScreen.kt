@@ -1,5 +1,6 @@
 package com.skywalker.whatsapp_clone.presentation.status_screen
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -39,7 +40,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.PathEffect
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -85,6 +90,7 @@ fun StatusScreen() {
 
                 Spacer(modifier = Modifier.height(18.dp))
                 PersonalStatusComponent()
+                DashedLine()
                 Spacer(modifier = Modifier.height(18.dp))
                 StatusItem()
             }
@@ -209,3 +215,29 @@ fun TopBar() {
     )
 }
 
+@Composable
+fun DashedLine(modifier: Modifier = Modifier) {
+
+    val density = LocalDensity.current
+    with(density) {
+        val dashOnInterval = 1.dp.toPx()
+        val dashOffInterval = 1.dp.toPx()
+
+        val pathEffect = PathEffect.dashPathEffect(
+            intervals = floatArrayOf(dashOnInterval, dashOffInterval),
+            phase = 0f
+        )
+        Canvas(Modifier.fillMaxWidth()) {
+            drawLine(
+                color = Color.Gray,
+                start = Offset(0f, 0f),
+                end = Offset(size.width, 0f),
+                strokeWidth = 4.dp.toPx(),
+                cap = StrokeCap.Butt
+
+            )
+        }
+    }
+
+
+}
