@@ -83,8 +83,9 @@ fun StatusScreen() {
                     fontSize = 24.sp,
                 )
 
-                Spacer(modifier=Modifier.height(18.dp))
-
+                Spacer(modifier = Modifier.height(18.dp))
+                PersonalStatusComponent()
+                Spacer(modifier = Modifier.height(18.dp))
                 StatusItem()
             }
 
