@@ -4,7 +4,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -37,12 +39,17 @@ import com.skywalker.whatsapp_clone.R
 
 @Composable
 fun CommunityScreen(){
-    Column(modifier= Modifier
-        .padding(top = 18.dp, start = 16.dp, end = 16.dp, bottom = 16.dp)) {
-        Text("Create Your Community",
-            fontWeight = FontWeight.SemiBold,
-            fontSize = 32.sp
-        )
+    Column(modifier= Modifier){
+        Spacer(modifier = Modifier.height(18.dp))
+        TopBar()
+        Spacer(modifier = Modifier.height(18.dp))
+        Column (
+            modifier=Modifier
+                .padding(horizontal = 16.dp)
+                .align(Alignment.CenterHorizontally)
+        ){
+            CreateServerComponent()
+        }
     }
 }
 
@@ -110,7 +117,7 @@ fun TopBar() {
 
         } else {
             Text(
-                "Updates",
+                "Communities",
                 fontWeight = FontWeight.Medium,
                 fontSize = 32.sp,
                 modifier = Modifier
