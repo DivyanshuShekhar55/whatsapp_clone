@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddComment
@@ -46,12 +48,26 @@ import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.skywalker.whatsapp_clone.R
+
+val statusItemList : List<StatusItemModel> = listOf(
+    StatusItemModel(
+        image = R.drawable.pfp_1,
+        name="Sakamoto taro",
+        uploadTime = "10:29AM"
+    ),
+    StatusItemModel(
+        image = R.drawable.pfp_3,
+        name="Yui",
+        uploadTime = "Just Now"
+    )
+)
 
 @Composable
 @Preview
@@ -95,7 +111,13 @@ fun StatusScreen() {
                 Spacer(modifier = Modifier.height(24.dp))
                 Text("Recent Updates", fontWeight = FontWeight.Medium, fontSize = 18.sp)
                 Spacer(modifier = Modifier.height(14.dp))
-                StatusItem()
+
+                LazyColumn {
+                    items(statusItemList) {
+                        StatusItem(it.image, it.name, it.uploadTime)
+                    }
+                }
+
             }
 
         }

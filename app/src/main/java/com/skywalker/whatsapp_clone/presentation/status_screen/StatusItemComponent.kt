@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
@@ -31,7 +32,7 @@ import androidx.compose.ui.unit.sp
 import com.skywalker.whatsapp_clone.R
 
 @Composable
-fun StatusItem() {
+fun StatusItem(image:Int, name:String, uploadTime:String) {
     val ringColor = colorResource(R.color.light_green)
     Row(
         modifier = Modifier
@@ -44,7 +45,7 @@ fun StatusItem() {
                 .size(60.dp), contentAlignment = (Alignment.Center)
         ) {
             Image(
-                painter = painterResource(R.drawable.pfp_2),
+                painter = painterResource(image),
                 "null",
                 modifier = Modifier
                     .size(55.dp)
@@ -63,9 +64,11 @@ fun StatusItem() {
         Spacer(modifier = Modifier.width(16.dp))
 
         Column {
-            Text("Sakamoto", fontWeight = FontWeight.SemiBold, fontSize = 18.sp)
-            Text("Just Now", color = Color.Gray)
+            Text(name, fontWeight = FontWeight.SemiBold, fontSize = 18.sp)
+            Text(uploadTime, color = Color.Gray)
         }
 
     }
+
+    Spacer(modifier = Modifier.height(16.dp))
 }
