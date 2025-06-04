@@ -9,9 +9,15 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material3.Badge
+import androidx.compose.material3.BadgedBox
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -28,7 +34,7 @@ import androidx.compose.ui.unit.sp
 import com.skywalker.whatsapp_clone.R
 
 @Composable
-fun CommunityItem(image: Int, name: String, unreadMsg :Int) {
+fun CommunityItem(image: Int, name: String, unreadMsg: Int) {
     val ringColor = colorResource(R.color.light_green)
     Row(
         modifier = Modifier
@@ -49,9 +55,39 @@ fun CommunityItem(image: Int, name: String, unreadMsg :Int) {
 
         Spacer(modifier = Modifier.width(16.dp))
 
-        Column {
-            Text(name, fontWeight = FontWeight.SemiBold, fontSize = 18.sp)
-            Text(unreadMsg.toString(), color = Color.Gray)
+        Text(name, fontWeight = FontWeight.SemiBold, fontSize = 24.sp)
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        BadgedBox(
+            badge = {
+                if (unreadMsg > 0 && unreadMsg <= 4) {
+                    Badge(
+                        containerColor = ringColor,
+                        contentColor = Color.White,
+                        modifier = Modifier.offset(x = (-5).dp, y = (0.5).dp)
+                            .size(18.dp)
+                    ) {
+                        Text(unreadMsg.toString(), fontSize = 14.sp)
+                    }
+
+                } else if (unreadMsg > 4) {
+
+                    Badge(
+                        containerColor = ringColor,
+                        contentColor = Color.White
+                    ) {
+                        Text("4+")
+                    }
+                }
+            },
+        ) {
+
+            Icon(
+                Icons.Default.ChevronRight,
+                null,
+                modifier = Modifier.size(32.dp)
+            )
         }
 
     }
