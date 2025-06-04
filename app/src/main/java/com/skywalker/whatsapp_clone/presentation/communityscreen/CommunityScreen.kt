@@ -51,7 +51,7 @@ fun CommunityScreen(){
         ){
             CreateServerComponent()
             Spacer(modifier=Modifier.height(24.dp))
-            CommunityItem(R.drawable.rocket_launch_2, "Sakamoto taro", "10:29AM")
+            CommunityItem(R.drawable.rocket_launch_2, "Sakamoto taro", 4)
         }
     }
 }

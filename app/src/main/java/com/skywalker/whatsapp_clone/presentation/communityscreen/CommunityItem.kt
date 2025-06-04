@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.sp
 import com.skywalker.whatsapp_clone.R
 
 @Composable
-fun CommunityItem(image:Int, name:String, uploadTime:String) {
+fun CommunityItem(image: Int, name: String, unreadMsg :Int) {
     val ringColor = colorResource(R.color.light_green)
     Row(
         modifier = Modifier
@@ -36,32 +36,22 @@ fun CommunityItem(image:Int, name:String, uploadTime:String) {
         verticalAlignment = Alignment.CenterVertically
     ) {
 
-        Box(
+
+        Image(
+            painter = painterResource(image),
+            "null",
             modifier = Modifier
-                .size(60.dp), contentAlignment = (Alignment.Center)
-        ) {
-            Image(
-                painter = painterResource(image),
-                "null",
-                modifier = Modifier
-                    .size(55.dp)
-                    .clip(CircleShape),
-                contentScale = ContentScale.Crop
-            )
-            Canvas(modifier = Modifier.fillMaxSize()) {
-                drawCircle(
-                    color = ringColor,
-                    style = Stroke(width = 4.dp.toPx())
-                )
-            }
-        }
+                .size(55.dp)
+                .clip(CircleShape),
+            contentScale = ContentScale.Crop
+        )
 
 
         Spacer(modifier = Modifier.width(16.dp))
 
         Column {
             Text(name, fontWeight = FontWeight.SemiBold, fontSize = 18.sp)
-            Text(uploadTime, color = Color.Gray)
+            Text(unreadMsg.toString(), color = Color.Gray)
         }
 
     }
