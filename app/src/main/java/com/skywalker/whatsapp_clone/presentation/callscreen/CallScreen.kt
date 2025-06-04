@@ -4,7 +4,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -60,10 +62,17 @@ fun CallScreen() {
             }
         }
     ) { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding)) { }
+        Column(
+            modifier = Modifier
+                .padding(innerPadding)
+        ) {
+            TopBar()
+            Spacer(modifier=Modifier.height(24.dp))
+            CallItem()
+        }
     }
 
-    TopBar()
+
 }
 
 @Composable
@@ -130,7 +139,7 @@ fun TopBar() {
 
         } else {
             Text(
-                "Updates",
+                "Call",
                 fontWeight = FontWeight.Medium,
                 fontSize = 32.sp,
                 modifier = Modifier
