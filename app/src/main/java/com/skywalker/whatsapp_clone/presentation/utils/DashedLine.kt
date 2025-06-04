@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun DashedLine(modifier: Modifier = Modifier, paddingTop: Dp) {
+fun DashedLine(modifier: Modifier = Modifier, paddingTop: Dp, paddingHorizontal:Dp) {
 
     val density = LocalDensity.current
     with(density) {
@@ -28,7 +28,9 @@ fun DashedLine(modifier: Modifier = Modifier, paddingTop: Dp) {
         Canvas(
             Modifier
                 .fillMaxWidth()
-                .padding(top = paddingTop)
+                .padding(top = paddingTop,
+                    start = paddingHorizontal,
+                    end =  paddingHorizontal)
         ) {
             drawLine(
                 color = Color.Gray,

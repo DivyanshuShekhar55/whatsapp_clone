@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
@@ -40,6 +42,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.skywalker.whatsapp_clone.R
+import com.skywalker.whatsapp_clone.presentation.utils.DashedLine
 
 @Composable
 fun CallScreen() {
@@ -62,13 +65,52 @@ fun CallScreen() {
             }
         }
     ) { innerPadding ->
+        //Spacer(modifier = Modifier.height(innerPadding.calculateTopPadding()))
         Column(
             modifier = Modifier
-                .padding(innerPadding)
+                .padding(
+                    innerPadding
+                )
         ) {
             TopBar()
-            Spacer(modifier=Modifier.height(24.dp))
-            CallItem()
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Text(
+                "Favourites",
+                fontWeight = FontWeight.Medium,
+                fontSize = 24.sp,
+                modifier = Modifier.padding(start = 16.dp)
+
+            )
+
+            Spacer(modifier = Modifier.height(18.dp))
+
+            LazyRow {
+                items(10) {
+                    CallFavItem()
+                }
+            }
+
+            DashedLine(paddingTop = 24.dp, paddingHorizontal = 16.dp)
+            Spacer(modifier = Modifier.height(18.dp))
+
+            Text(
+                "Recent",
+                fontWeight = FontWeight.Medium,
+                fontSize = 24.sp,
+                modifier = Modifier.padding(start = 16.dp)
+
+            )
+
+            Spacer(modifier = Modifier.height(18.dp))
+
+            LazyColumn {
+                items(8) {
+                    CallItem()
+                }
+            }
+
+
         }
     }
 

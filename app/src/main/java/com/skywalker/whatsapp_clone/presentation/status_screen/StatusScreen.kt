@@ -108,7 +108,7 @@ fun StatusScreen() {
 
                 Spacer(modifier = Modifier.height(18.dp))
                 PersonalStatusComponent()
-                DashedLine(paddingTop = 24.dp)
+                DashedLine(paddingTop = 24.dp, paddingHorizontal = 0.dp)
                 Spacer(modifier = Modifier.height(24.dp))
                 Text("Recent Updates", fontWeight = FontWeight.Medium, fontSize = 18.sp)
                 Spacer(modifier = Modifier.height(14.dp))

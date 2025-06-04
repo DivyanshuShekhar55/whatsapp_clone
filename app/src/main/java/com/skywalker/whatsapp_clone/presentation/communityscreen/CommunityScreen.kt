@@ -66,7 +66,7 @@ fun CommunityScreen() {
                 .align(Alignment.CenterHorizontally)
         ) {
             CreateServerComponent()
-            DashedLine(paddingTop = 18.dp)
+            DashedLine(paddingTop = 18.dp, paddingHorizontal = 0.dp)
             Spacer(modifier = Modifier.height(24.dp))
 
             LazyColumn {
