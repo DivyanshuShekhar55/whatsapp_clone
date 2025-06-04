@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.skywalker.whatsapp_clone.presentation.callscreen.CallScreen
 import com.skywalker.whatsapp_clone.presentation.communityscreen.CommunityScreen
 import com.skywalker.whatsapp_clone.presentation.homescreen.HomeScreen
 import com.skywalker.whatsapp_clone.presentation.splashscreen.SplashScreen
@@ -26,7 +27,8 @@ class MainActivity : ComponentActivity() {
                 // SplashScreen()
                 // HomeScreen()
                 // StatusScreen()
-                CommunityScreen()
+                // CommunityScreen()
+                CallScreen()
             }
         }
     }
