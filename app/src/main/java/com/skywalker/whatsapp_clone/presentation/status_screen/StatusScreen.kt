@@ -55,6 +55,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.skywalker.whatsapp_clone.R
+import com.skywalker.whatsapp_clone.presentation.utils.DashedLine
 
 val statusItemList : List<StatusItemModel> = listOf(
     StatusItemModel(
@@ -240,31 +241,3 @@ fun TopBar() {
     )
 }
 
-@Composable
-fun DashedLine(modifier: Modifier = Modifier, paddingTop: Dp) {
-
-    val density = LocalDensity.current
-    with(density) {
-        val dashOnInterval = 8.dp.toPx()
-        val dashOffInterval = 8.dp.toPx()
-
-        val pathEffect = PathEffect.dashPathEffect(
-            intervals = floatArrayOf(dashOnInterval, dashOffInterval),
-            phase = 0f
-        )
-        Canvas(Modifier.fillMaxWidth()
-            .padding(top = paddingTop)) {
-            drawLine(
-                color = Color.Gray,
-                start = Offset(0f, 0f),
-                end = Offset(size.width, 0f),
-                strokeWidth = 4.dp.toPx(),
-                cap = StrokeCap.Butt,
-                pathEffect = pathEffect
-
-            )
-        }
-    }
-
-
-}

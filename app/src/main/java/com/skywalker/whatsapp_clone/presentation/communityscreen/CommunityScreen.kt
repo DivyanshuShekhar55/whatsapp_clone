@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
@@ -37,21 +39,43 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.skywalker.whatsapp_clone.R
+import com.skywalker.whatsapp_clone.presentation.utils.DashedLine
+
+val community_items = listOf<CommunityItemModel>(
+    CommunityItemModel(
+        "Martians",
+        R.drawable.rocket_launch_2,
+        2
+    ),
+    CommunityItemModel(
+        "Philosophy Club",
+        R.drawable.rocket_launch,
+        8
+    )
+)
 
 @Composable
-fun CommunityScreen(){
-    Column(modifier= Modifier){
+fun CommunityScreen() {
+    Column(modifier = Modifier) {
         Spacer(modifier = Modifier.height(18.dp))
         TopBar()
         Spacer(modifier = Modifier.height(18.dp))
-        Column (
-            modifier=Modifier
+        Column(
+            modifier = Modifier
                 .padding(horizontal = 16.dp)
                 .align(Alignment.CenterHorizontally)
-        ){
+        ) {
             CreateServerComponent()
-            Spacer(modifier=Modifier.height(24.dp))
-            CommunityItem(R.drawable.rocket_launch_2, "Sakamoto taro", 4)
+            DashedLine(paddingTop = 18.dp)
+            Spacer(modifier = Modifier.height(24.dp))
+
+            LazyColumn {
+                items(community_items) {
+
+                    CommunityItem(it.image, it.name, it.unreadMsg)
+                }
+            }
+
         }
     }
 }
