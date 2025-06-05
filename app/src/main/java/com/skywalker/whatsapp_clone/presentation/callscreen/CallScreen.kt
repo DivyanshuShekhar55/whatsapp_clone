@@ -77,7 +77,7 @@ val CallItemsList = listOf<CallItemModel>(
     ),
     CallItemModel(
         image = R.drawable.pfp_4,
-        name = "Nobita",
+        name = "Keiko",
         isMissedCall = false,
         lastCalledTime = "Yesterday 08:01PM"
     ),
