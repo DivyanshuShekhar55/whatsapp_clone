@@ -12,12 +12,19 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.CallMissed
+import androidx.compose.material.icons.sharp.CallMissed
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -46,8 +53,27 @@ fun CallItem() {
 
         Column {
             Text("Yui", fontSize = 18.sp, fontWeight = FontWeight.Medium)
-            Text("Yesterday 10:39PM", fontSize = 18.sp, )
+
+            Row {
+                Icon(
+                    Icons.Sharp.CallMissed,
+                    null,
+                    tint = Color.Red
+                )
+                Text("Yesterday 10:39PM", fontSize = 18.sp, )
+            }
+
         }
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        Icon(
+            Icons.Default.Call,
+            null,
+            modifier = Modifier
+                .padding(end = 16.dp),
+            tint = colorResource(R.color.light_green)
+        )
 
     }
 
