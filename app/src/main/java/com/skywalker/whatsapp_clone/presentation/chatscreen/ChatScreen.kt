@@ -3,6 +3,7 @@ package com.skywalker.whatsapp_clone.presentation.chatscreen
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
@@ -16,10 +17,11 @@ fun ChatScreen() {
         Spacer(modifier = Modifier.height(18.dp))
         ChatScreenTopBar()
 
-        LazyColumn {
+        LazyColumn (modifier = Modifier
+            .padding(horizontal = 8.dp)){
             items(20) {
                 ChatItem()
-                Spacer(modifier=Modifier.height(4.dp))
+                Spacer(modifier=Modifier.height(6.dp))
             }
         }
     }
