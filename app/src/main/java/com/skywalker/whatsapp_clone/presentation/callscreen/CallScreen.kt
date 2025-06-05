@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
@@ -43,6 +44,51 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.skywalker.whatsapp_clone.R
 import com.skywalker.whatsapp_clone.presentation.utils.DashedLine
+
+val FavCallItemsList = listOf<FavCallItemModel>(
+    FavCallItemModel(
+        image = R.drawable.pfp_2,
+        name = "Hana"
+    ),
+    FavCallItemModel(
+        image = R.drawable.pfp_3,
+        name = "Yui"
+    )
+)
+
+val CallItemsList = listOf<CallItemModel>(
+    CallItemModel(
+        image = R.drawable.pfp_2,
+        name = "Hana",
+        isMissedCall = false,
+        lastCalledTime = "Today 11:00AM"
+    ),
+    CallItemModel(
+        image = R.drawable.pfp_2,
+        name = "Hana",
+        isMissedCall = true,
+        lastCalledTime = "Yesterday 10:39PM"
+    ),
+    CallItemModel(
+        image = R.drawable.pfp_3,
+        name = "Yui",
+        isMissedCall = true,
+        lastCalledTime = "Yesterday 08:39PM"
+    ),
+    CallItemModel(
+        image = R.drawable.pfp_4,
+        name = "Nobita",
+        isMissedCall = false,
+        lastCalledTime = "Yesterday 08:01PM"
+    ),
+    CallItemModel(
+        image = R.drawable.pfp_5,
+        name = "Naruto",
+        isMissedCall = true,
+        lastCalledTime = "01-06-25 11:00AM"
+    ),
+
+    )
 
 @Composable
 fun CallScreen() {
@@ -86,8 +132,8 @@ fun CallScreen() {
             Spacer(modifier = Modifier.height(18.dp))
 
             LazyRow {
-                items(10) {
-                    CallFavItem()
+                items (FavCallItemsList) {
+                    CallFavItem(it)
                 }
             }
 
@@ -105,8 +151,8 @@ fun CallScreen() {
             Spacer(modifier = Modifier.height(18.dp))
 
             LazyColumn {
-                items(8) {
-                    CallItem()
+                items(CallItemsList) {
+                    CallItem(it)
                 }
             }
 

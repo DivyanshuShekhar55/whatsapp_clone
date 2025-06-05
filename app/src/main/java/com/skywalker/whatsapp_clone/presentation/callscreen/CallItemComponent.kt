@@ -1,5 +1,6 @@
 package com.skywalker.whatsapp_clone.presentation.callscreen
 
+import android.graphics.drawable.Icon
 import android.graphics.drawable.shapes.OvalShape
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -15,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.CallMissed
+import androidx.compose.material.icons.filled.CallReceived
 import androidx.compose.material.icons.sharp.CallMissed
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -23,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -35,13 +38,23 @@ import com.skywalker.whatsapp_clone.presentation.utils.TallOvalShape
 
 
 @Composable
-fun CallItem() {
+fun CallItem(callItem: CallItemModel) {
+    val tintColor: Color
+    val callIcon : ImageVector
+
+    if (callItem.isMissedCall){
+        tintColor= Color.Red
+        callIcon = Icons.Default.CallMissed
+    }else{
+        tintColor = colorResource(R.color.light_green)
+        callIcon = Icons.Default.CallReceived
+    }
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.padding(start = 16.dp)
-    ){
+    ) {
         Image(
-            painter = painterResource(R.drawable.pfp_2),
+            painter = painterResource(callItem.image),
             null,
             modifier = Modifier
                 .size(70.dp)
@@ -52,15 +65,16 @@ fun CallItem() {
         Spacer(modifier = Modifier.width(16.dp))
 
         Column {
-            Text("Yui", fontSize = 18.sp, fontWeight = FontWeight.Medium)
+            Text(callItem.name, fontSize = 18.sp, fontWeight = FontWeight.Medium)
 
             Row {
                 Icon(
-                    Icons.Sharp.CallMissed,
+                    callIcon,
                     null,
-                    tint = Color.Red
+                    tint = tintColor
                 )
-                Text("Yesterday 10:39PM", fontSize = 18.sp, )
+                Spacer(modifier = Modifier.width(2.dp))
+                Text(callItem.lastCalledTime, fontSize = 18.sp)
             }
 
         }

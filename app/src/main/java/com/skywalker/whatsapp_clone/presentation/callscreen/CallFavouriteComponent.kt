@@ -20,13 +20,13 @@ import com.skywalker.whatsapp_clone.R
 import com.skywalker.whatsapp_clone.presentation.utils.CookieShape
 
 @Composable
-fun CallFavItem(){
+fun CallFavItem(favItem : FavCallItemModel){
     Column (
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.padding(start = 16.dp)
     ){
         Image(
-            painter = painterResource(R.drawable.pfp_2),
+            painter = painterResource(favItem.image),
             null,
             modifier = Modifier
                 .size(70.dp)
@@ -36,6 +36,6 @@ fun CallFavItem(){
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        Text("Yui", fontSize = 18.sp, fontWeight = FontWeight.Medium)
+        Text(favItem.name, fontSize = 18.sp, fontWeight = FontWeight.Medium)
     }
 }
