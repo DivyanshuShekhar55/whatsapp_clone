@@ -1,14 +1,19 @@
 package com.skywalker.whatsapp_clone.presentation.chatscreen
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -16,10 +21,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.skywalker.whatsapp_clone.presentation.utils.ChatBubbleShapeLeft
 import com.skywalker.whatsapp_clone.presentation.utils.ChatBubbleShapeRight
+import com.skywalker.whatsapp_clone.R
+import com.skywalker.whatsapp_clone.presentation.utils.OvalShape
+import com.skywalker.whatsapp_clone.presentation.utils.TallOvalShape
 
 @Composable
 fun ChatItem() {
@@ -52,12 +61,26 @@ fun ChatItem() {
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = if (isReceived) Arrangement.Start else Arrangement.End
     ) {
+        if (isReceived) {
+            Image(
+                painter = painterResource(R.drawable.pfp_3),
+                "PFP",
+                modifier = Modifier
+                    .size(30.dp)
+                    .clip(CircleShape)
+                    .align(Alignment.Bottom)
+            )
+
+            Spacer(modifier = Modifier.width(6.dp))
+        }
+
+
         Column(
             modifier = Modifier
                 .widthIn(max = 280.dp)
                 .clip(clip_shape)
                 .background(bgcol)
-                .padding(horizontal = 12.dp, vertical = 8.dp)
+                .padding(start = 12.dp, end = 12.dp, top = 8.dp)
         ) {
             Text(
                 text = "Hey there !!",
@@ -72,7 +95,6 @@ fun ChatItem() {
                 fontSize = 10.sp,
                 modifier = Modifier
                     .align(Alignment.End)
-                    .padding(top = (0.5).dp)
             )
         }
     }
